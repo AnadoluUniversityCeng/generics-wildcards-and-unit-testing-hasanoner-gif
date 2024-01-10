@@ -4,11 +4,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-/**
- * BIM207 Project has 2 Parts, 50 points each.
- * Part-I: Writing a failing test case to demonstrate a bug.
- * Part-II: Implement a generic method both using wildcards and type parameters.
- */
 public class App {
 
     /**
@@ -34,19 +29,7 @@ public class App {
         }
     }
 
-
-    /**
-     * There's often a case when we can declare a generic method using either wildcards or type parameters.
-     * https://www.baeldung.com/java-generics-type-parameter-vs-wildcard
-     * Please implement an increment-by-one method that increments the frequency of given key by one in a count/frequency map.
-     * Implement the generic method in both possible two ways (i.e. using wildcards <?> and type parameters <E>).
-     * So that, pre-written test cases all pass. Do not modify the test cases.
-     *
-     * @param map the frequency map, keys can be any Enum (built-in or custom), values are Integer.
-     * @param key any Enum type should work. Hint: How do I decrypt "Enum<E extends Enum<E>>"?
-     * http://www.angelikalanger.com/GenericsFAQ/FAQSections/TypeParameters.html#FAQ106
-     */
-
+   
 
     /* **********************************************
      ******* ALL TESTS MUST PASS IN THE END *********
@@ -54,20 +37,65 @@ public class App {
      ************************************************
      */
 
+ static void incrementCountMapWildcards1(Map<Enum<?>, Integer> map, Enum<?> key) {
+        map.merge(key, 1, Integer::sum);
+    }
+
+    static <E extends Enum<E>> void incrementCountMapGenerics1(Map<Enum<E>, Integer> map, Enum<E> key) {
+        map.merge(key, 1, Integer::sum);
+    }
+
+    static void incrementCountMapWildcards2(Map<Enum<?>, Integer> map, Enum<?> key) {
+        map.merge(key, 1, Integer::sum);
+        // Implement the method using wildcards
+    }
+
+    static <E extends Enum<E>> void incrementCountMapGenerics2(Map<Enum<E>, Integer> map, Enum<E> key) {
+        map.merge(key, 1, Integer::sum);
+        // Implement the method using type parameters
+    }
+
     /**
-     * Hint: Map.merge() - One method to rule them all
-     * https://nurkiewicz.com/2019/03/mapmerge-one-method-to-rule-them-all.html
+     * Implement the remaining two methods as follows:
      */
-    static <> void {
+
+    static void incrementCountMapWildcards3(Map<Enum<?>, Integer> map, Enum<?> key) {
+        map.merge(key, 1, Integer::sum);
+        // Implement the method using wildcards
     }
 
-    static void {
+    static <E extends Enum<E>> void incrementCountMapGenerics3(Map<Enum<E>, Integer> map, Enum<E> key) {
+        map.merge(key, 1, Integer::sum);
+        // Implement the method using type parameters
     }
 
-    static <> void {
+    static void incrementCountMapWildcards4(Map<Enum<?>, Integer> map, Enum<?> key) {
+        map.merge(key, 1, Integer::sum);
+        // Implement the method using wildcards
     }
 
-    static void {
+    static <E extends Enum<E>> void incrementCountMapGenerics4(Map<Enum<E>, Integer> map, Enum<E> key) {
+        map.merge(key, 1, Integer::sum);
+        // Implement the method using type parameters
+    }
+
+    /**
+     * Implement the remaining four methods as follows:
+     */
+
+    static void methodName1() {
+        // Implement the method
+    }
+
+    static void methodName2() {
+        // Implement the method
+    }
+
+    static void methodName3() {
+        // Implement the method
+    }
+
+    static void methodName4() {
+        // Implement the method
     }
 }
-
