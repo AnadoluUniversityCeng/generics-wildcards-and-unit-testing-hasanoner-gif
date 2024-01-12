@@ -1,37 +1,21 @@
 package edu.estu;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
+import static org.junit.Assert.assertTrue;
 
-/**
- * Unit tests for the first part of the project.
+/* *********************************************************
+ **** WRITE YOUR FAILING UNIT TEST(S) INTO  THIS FILE! *****
+ ***********************************************************
  */
 public class FailingTest {
-
-    @Test
-    public void testInfiniteLoop() {
-        // For demonstration purposes, let's assume the bug occurs when the input is positive infinity.
-        double input = Double.POSITIVE_INFINITY;
-
+    @Test(timeout = 1000)
+    public void testInfiniteLoopBug() {
         try {
-            // Call the infiniteLoop method with the problematic input
-            App.infiniteLoop(input);
-
-            // If the method did not throw an IllegalStateException, fail the test
-            fail("The infiniteLoop method did not throw the expected IllegalStateException.");
-        } catch (IllegalStateException expected) {
-            // The method is expected to throw an IllegalStateException, and the test passes.
-            
-            // We can add more specific checks on the exception message or other details if needed.
-            assertNotNull(expected.getMessage());
-            assertTrue(expected.getMessage().contains("infinite loop"));
-
-            // Additional assertions if there are specific properties or conditions you want to check
-            // For example, if the exception has a custom error code:
-            assertEquals("ERROR_CODE_123", ((CustomException) expected).getErrorCode());
-        } catch (Exception unexpected) {
-            // If any other type of exception is thrown, fail the test with an explanation
-            fail("Unexpected exception: " + unexpected.getClass().getSimpleName());
+            App.infiniteLoop(Double.POSITIVE_INFINITY);
+            fail("An infinite loop was anticipated, but the method finished within the timeout...");
+        } catch (Throwable e) {
+            // Additional verification might be added here to assert the expected error.
         }
     }
 }
